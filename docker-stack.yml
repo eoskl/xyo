@@ -1,0 +1,50 @@
+version: "3"
+services:
+  archivist:
+    image: xyonetwork/app-archivist:latest
+    ports:
+      - "11000:11000"
+      - "11001:11001"
+    networks:
+      - db_network
+    environment:
+      NODE_NAME: "wintersulgen"
+      SQL__HOST: "xyo_db"
+      SQL__USER: "xyo"
+      SQL__PASSWORD: "db_xyo"
+      SQL__DATABASE: "xyo"
+      SQL__PORT: "3306"
+    volumes:
+      - ./:/workspace/logs
+      - ./:/workspace/archivist-db
+      
+  xyo_db:
+    image: mysql:5.7.24
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./:/var/lib/mysql
+    networks:
+      - db_network
+    environment:
+      MYSQL_ROOT_PASSWORD: "benjamin"
+      MYSQL_DATABASE: "xyo"
+      MYSQL_USER: "xyo"
+      MYSQL_PASSWORD: "db_xyo"
+    restart: always
+    command: "--sql_mode=NO_ENGINE_SUBSTITUTION"
+  
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  db_network:
+    driver: overlay
