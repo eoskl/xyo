@@ -15,8 +15,8 @@ services:
       SQL__DATABASE: "xyo"
       SQL__PORT: "3306"
     volumes:
-      - ./:/workspace/logs
-      - ./:/workspace/archivist-db
+      - xyo_data:/workspace/logs
+      - xyo_data:/workspace/archivist-db
       
   xyo_db:
     image: mysql:5.7.24
@@ -48,3 +48,9 @@ services:
 networks:
   db_network:
     driver: overlay
+
+volumes:
+  xyo_data:
+    driver: "cloudstore:aws"
+    driver_opts:
+     backing: shared
