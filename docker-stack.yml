@@ -2,6 +2,9 @@ version: "3"
 services:
   archivist:
     image: xyonetwork/app-archivist:latest
+    container_name: xyo_arch
+    depends_on:
+      - xyo_db
     ports:
       - "11000:11000"
       - "11001:11001"
@@ -15,15 +18,16 @@ services:
       SQL__DATABASE: "xyo"
       SQL__PORT: "3306"
     volumes:
-      - xyo_data:/workspace/logs
-      - xyo_data:/workspace/archivist-db
+      - xyo_log:/workspace/logs
+      - xyo_arch_db:/workspace/archivist-db
       
   xyo_db:
     image: mysql:5.7.24
+    container_name: xyo_mysql
     ports:
       - "3306:3306"
     volumes:
-      - ./:/var/lib/mysql
+      - mysql_db:/var/lib/mysql
     networks:
       - db_network
     environment:
@@ -50,7 +54,15 @@ networks:
     driver: overlay
 
 volumes:
-  xyo_data:
+  xyo_log:
+    driver: "cloudstore:aws"
+    driver_opts:
+     backing: shared
+  xyo_arch_db:
+    driver: "cloudstore:aws"
+    driver_opts:
+     backing: shared
+  mysql_db:
     driver: "cloudstore:aws"
     driver_opts:
      backing: shared
