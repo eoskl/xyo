@@ -2,9 +2,8 @@ version: "3"
 services:
   archivist:
     image: xyonetwork/app-archivist:latest
-    container_name: xyo_arch
     depends_on:
-      - xyo_db
+      - db
     ports:
       - "11000:11000"
       - "11001:11001"
@@ -12,18 +11,17 @@ services:
       - db_network
     environment:
       NODE_NAME: "wintersulgen"
-      SQL__HOST: "xyo_db"
+      SQL__HOST: "db"
       SQL__USER: "xyo"
-      SQL__PASSWORD: "db_xyo"
+      SQL__PASSWORD: "xyo"
       SQL__DATABASE: "xyo"
       SQL__PORT: "3306"
     volumes:
       - xyo_log:/workspace/logs
       - xyo_arch_db:/workspace/archivist-db
       
-  xyo_db:
+  db:
     image: mysql:5.7.24
-    container_name: xyo_mysql
     ports:
       - "3306:3306"
     volumes:
@@ -31,11 +29,10 @@ services:
     networks:
       - db_network
     environment:
-      MYSQL_ROOT_PASSWORD: "benjamin"
+      MYSQL_ROOT_PASSWORD: "admin"
       MYSQL_DATABASE: "xyo"
       MYSQL_USER: "xyo"
-      MYSQL_PASSWORD: "db_xyo"
-    restart: always
+      MYSQL_PASSWORD: "xyo"
     command: "--sql_mode=NO_ENGINE_SUBSTITUTION"
   
   visualizer:
@@ -55,14 +52,14 @@ networks:
 
 volumes:
   xyo_log:
-    driver: "cloudstore:aws"
+    driver: "cloudstor:aws"
     driver_opts:
      backing: shared
   xyo_arch_db:
-    driver: "cloudstore:aws"
+    driver: "cloudstor:aws"
     driver_opts:
      backing: shared
   mysql_db:
-    driver: "cloudstore:aws"
+    driver: "cloudstor:aws"
     driver_opts:
      backing: shared
