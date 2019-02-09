@@ -12,5 +12,5 @@ Create CloudStor EFS mount targets
 
 To-Do list
 
-- create volumes for the persistent data
+- create volumes for the persistent data (Cloudstor)
 - sizing?
