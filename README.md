@@ -1,5 +1,5 @@
 # AWS docker swarm based xyo nodes 
-*aka: wintersulgen is coming*
+*aka: [wintersulgen](https://www.kompetenz24.de/%C3%BCber-uns/) is coming*
 
 * docker-stack.yml
 
