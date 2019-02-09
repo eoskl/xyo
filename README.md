@@ -14,6 +14,9 @@ Once the swarm is up you can ssh into one of the manager nodes and grep the yml 
 Then simply adjust the parameters as needed and bring up the stack with
 * stack deploy -c docker-stack.yml xyo
 
+mysql replication in swarm node taken from [here](http://ayoubensalem.me/tutorials/2018-04-03/Mysql-replication-in-Swarm-Mode)
+
+
 To-Do list
 
 - create volumes for the persistent data (Cloudstor)
