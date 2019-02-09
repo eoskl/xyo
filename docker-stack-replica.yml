@@ -1,0 +1,95 @@
+version: "3"
+services:
+  archivist:
+    image: xyonetwork/app-archivist:latest
+    depends_on:
+      - db
+    ports:
+      - "11000:11000"
+      - "11001:11001"
+    networks:
+      - db_network
+    environment:
+      NODE_NAME: "wintersulgen"
+      SQL__HOST: "db"
+      SQL__USER: "xyo"
+      SQL__PASSWORD: "xyo"
+      SQL__DATABASE: "xyo"
+      SQL__PORT: "3306"
+    volumes:
+      - xyo_log:/workspace/logs
+      - xyo_arch_db:/workspace/archivist-db
+      
+  db_master:
+    image: actency/docker-mysql-replication:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_master:/var/lib/mysql
+    networks:
+      - db_network
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_DATABASE: "xyo"
+      MYSQL_USER: "xyo"
+      MYSQL_PASSWORD: "xyo"
+      REPLICATION_USER: "replica"
+      REPLICATION_PASSWORD: "replica"
+    command: "--sql_mode=NO_ENGINE_SUBSTITUTION"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  
+  db_slave:
+    image: actency/docker-mysql-replication:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_slave:/var/lib/mysql
+    networks:
+      - db_network
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_DATABASE: "xyo"
+      MYSQL_USER: "xyo"
+      MYSQL_PASSWORD: "xyo"
+      REPLICATION_USER: "replica"
+      REPLICATION_PASSWORD: "replica"
+    command: "--sql_mode=NO_ENGINE_SUBSTITUTION"
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+    
+  
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  db_network:
+    driver: overlay
+
+volumes:
+  xyo_log:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
+  xyo_arch_db:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
+  mysql_master:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
+  mysql_slave:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
