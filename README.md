@@ -1,7 +1,9 @@
-# xyo
-xyo setup tools
+# AWS docker swarm based xyo nodes (aka: wintersulgen is coming)
 
-to create a Docker Swarm there is already excellent documentation here
+xyo setup tools
+As a first step I translated the instruction from https://github.com/XYOracleNetwork/app-archivist-nodejs into a docker swarm compose yml file. 
+
+To create a Docker Swarm with variable amount of manager/worker nodes there is already excellent documentation here
 
 https://stelligent.com/2017/02/21/docker-swarm-mode-on-aws/
 
