@@ -1,7 +1,7 @@
 # AWS docker swarm based xyo nodes 
 *aka: [winter[sulgen]](https://www.cafe-landei.de/) is coming*
 
-Geohash: [u0w8j](http://bit.ly/u0w8j), Wintersulgen lies in the beautiful Deggenhauser valley (something similar to the Nappa Valley) and is in vicinity to global hubs like Zurich, Zug Crypto Valley, Friedrichshafen the birthplace of the Zeppelin and many more.
+Geohash: [u0w8j](http://geohash.org/u0w8j:Wintersulgen), Wintersulgen lies in the beautiful Deggenhauser valley (something similar to the Nappa Valley) and is in vicinity to global hubs like Zurich, Zug Crypto Valley, Friedrichshafen the birthplace of the Zeppelin and many more.
 
 
 * docker-stack.yml
