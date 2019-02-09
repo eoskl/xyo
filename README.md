@@ -1,5 +1,5 @@
 # AWS docker swarm based xyo nodes 
-*aka: [wintersulgen](https://www.cafe-landei.de/) is coming*
+*aka: [winter[sulgen]](https://www.cafe-landei.de/) is coming*
 
 * docker-stack.yml
 
