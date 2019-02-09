@@ -1,4 +1,5 @@
-# AWS docker swarm based xyo nodes (aka: wintersulgen is coming)
+# AWS docker swarm based xyo nodes 
+*aka: wintersulgen is coming*
 
 * docker-stack.yml
 
