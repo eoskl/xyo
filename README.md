@@ -1,4 +1,4 @@
-## AWS docker swarm based xyo nodes 
+# AWS docker swarm based xyo nodes 
 *aka: [wintersulgen](https://www.cafe-landei.de/) is coming*
 
 * docker-stack.yml
@@ -14,7 +14,7 @@ Once the swarm is up you can ssh into one of the manager nodes and grep the yml 
 Then simply adjust the parameters as needed and bring up the stack with
 * stack deploy -c docker-stack.yml xyo
 
-# Replication, HA etc.
+## Replication, HA etc.
 
 * docker-stack-replica.yml
 
