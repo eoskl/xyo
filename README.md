@@ -2,7 +2,7 @@
 
 * docker-stack.yml
 
-As a first step I translated the instruction from https://github.com/XYOracleNetwork/app-archivist-nodejs into a docker swarm compose yml file. 
+As a first step I translated the instruction from [xyo](https://github.com/XYOracleNetwork/app-archivist-nodejs) into a docker swarm compose yml file. 
 
 To create a Docker Swarm with variable amount of manager/worker nodes there is already excellent documentation here
 
