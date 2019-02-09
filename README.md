@@ -1,6 +1,6 @@
 # AWS docker swarm based xyo nodes (aka: wintersulgen is coming)
 
-* docker-compose.yml
+* docker-stack.yml
 
 As a first step I translated the instruction from https://github.com/XYOracleNetwork/app-archivist-nodejs into a docker swarm compose yml file. 
 
