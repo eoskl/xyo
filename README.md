@@ -29,8 +29,8 @@ The highlevel sequence of steps as follows
 - create the docker swarm. 
 
 From the Outputs tab of the cloudformation screen capture the following settings
- 1. VPCID (to configure RDS using the same private zone)
- 2. SwarmWideSecurityGroupID (to allow inbound connection from the nodes to the RDS instance
+     *VPCID* (to configure RDS using the same private zone)
+     *SwarmWideSecurityGroupID* (to allow inbound connection from the nodes to the RDS instance
 
 - create RDS (Internal) <== uses above VPC, new Security Group
 - once the RDS is up, go to the inbound security group of the RDS instance and add the rules for TCP/3306 access for the SwarmWideSecurityGroupID
