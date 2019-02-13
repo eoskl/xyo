@@ -31,3 +31,5 @@ The highlevel sequence of steps as follows
 - create RDS (Internal) <== uses above VPC, new Security Group
 - once the RDS is up, go to the inbound security group of the RDS instance and add the rules for TCP/3306 access for the SwarmWideSecurityGroupID
 - download the docker-rds.yml and update the SQL_HOST with the endpoint of the RDS service <your_instance>.rds.amazonaws.com>
+
+![Screenshot](archivist_rds.png)
