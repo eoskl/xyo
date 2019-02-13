@@ -1,1 +1,38 @@
+version: "3"
+services:
+  archivist:
+    image: xyonetwork/app-archivist:latest
+    ports:
+      - "11000:11000"
+      - "11001:11001"
+    environment:
+      NODE_NAME: "wintersulgen"
+      SQL__HOST: "xyo.ct527uhkfjrl.us-east-1.rds.amazonaws.com"
+      SQL__USER: "admin"
+      SQL__PASSWORD: "admin123"
+      SQL__DATABASE: "xyo"
+      SQL__PORT: "3306"
+    volumes:
+      - xyo_log:/workspace/logs
+      - xyo_arch_db:/workspace/archivist-db
+   
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
+volumes:
+  xyo_log:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
+  xyo_arch_db:
+    driver: "cloudstor:aws"
+    driver_opts:
+     backing: shared
