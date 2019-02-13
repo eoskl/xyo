@@ -7,7 +7,7 @@ services:
       - "11001:11001"
     environment:
       NODE_NAME: "wintersulgen"
-      SQL__HOST: "xyo.ct527uhkfjrl.us-east-1.rds.amazonaws.com"
+      SQL__HOST: "your-mysql-cname.rds.amazonaws.com"
       SQL__USER: "admin"
       SQL__PASSWORD: "admin123"
       SQL__DATABASE: "xyo"
