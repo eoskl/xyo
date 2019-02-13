@@ -3,6 +3,7 @@
 
 Geohash: [u0w8j](http://geohash.org/u0w8j:Wintersulgen), Wintersulgen lies in the beautiful Deggenhauser valley (something similar to the Nappa Valley) and is in vicinity to global hubs like Zurich, Zug Crypto Valley, Friedrichshafen the birthplace of the Zeppelin and many more.
 
+We want to use the Docker for AWS feature to spin up a complete Docker Swarm including VPC, networking etc so we oly need to worry about the archivist details.
 
 * docker-stack.yml
 
