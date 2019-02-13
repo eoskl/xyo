@@ -23,6 +23,11 @@ Then simply adjust the parameters as needed and bring up the stack with
 
 mysql replication in swarm node taken from [here](http://ayoubensalem.me/tutorials/2018-04-03/Mysql-replication-in-Swarm-Mode)
 
+## Using Amazon Relational Database Service (RDS)
+
+The highlevel sequence of steps as follows
+- create the docker swarm .  ==> VPC, Security Groups
+- create RDS (Internal) <== VPC, Security Groups
 
 To-Do list
 
