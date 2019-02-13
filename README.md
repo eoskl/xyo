@@ -15,7 +15,7 @@ Once the swarm is up you can ssh into one of the manager nodes and grep the yml 
 * curl -O https://raw.githubusercontent.com/eoskl/xyo/master/docker-stack.yml
 
 Then simply adjust the parameters as needed and bring up the stack with
-* stack deploy -c docker-stack.yml xyo
+* docker stack deploy -c docker-stack.yml xyo
 
 ## Replication, HA etc.
 
@@ -28,13 +28,9 @@ mysql replication in swarm node taken from [here](http://ayoubensalem.me/tutoria
 The highlevel sequence of steps as follows
 - create the docker swarm. 
 From the Outputs tab of the cloudformation screen capture the following settings
-a) VPCID (to configure RDS using the same private zone)
-b) SwarmWideSecurityGroupID (to allow inbound connection from the nodes to the RDS instance
+* VPCID (to configure RDS using the same private zone)
+* SwarmWideSecurityGroupID (to allow inbound connection from the nodes to the RDS instance
 
 - create RDS (Internal) <== uses above VPC, new Security Group
-- once the RDS is up, go to the inbound security group of teh RDS instance and add the rules for TCP/3306 access for the SwarmWideSecurityGroupID
-
-To-Do list
-
-- create volumes for the persistent data (Cloudstor)
-- sizing aka: wintersulgen is coming!
+- once the RDS is up, go to the inbound security group of the RDS instance and add the rules for TCP/3306 access for the SwarmWideSecurityGroupID
+- download the docker-rds.yml and update the SQL_HOST with the endpoint of the RDS service <your_instance>.rds.amazonaws.com>
