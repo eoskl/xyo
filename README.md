@@ -5,6 +5,18 @@ Geohash: [u0w8j](http://geohash.org/u0w8j:Wintersulgen), Wintersulgen lies in th
 
 We want to use the Docker for AWS feature to spin up a complete Docker Swarm including VPC, networking etc so we oly need to worry about the archivist details.
 
+## AWS Pre-requisites
+
+Apart from registering an account on AWS you would need also a key pair. Go to AWS EC2 Dashboard and select Key pairs. You can either import and existing key or create a new one. Once you click create new the my-key-par.pem file will be created and downloaded to your PC. 
+
+Use the chmod command to make sure your private key file isn't publicly viewable.
+
+chmod 400 my-key-pair.pem
+
+To once the swarm is up lookup the manager_node public dns names and ssh with below command (user is docker for dockerswarm)
+
+ssh -i /path/my-key-pair.pem docker@public_dns_name_of_manager_node
+
 * docker-stack.yml
 
 As a first step I translated the instruction from [xyo](https://github.com/XYOracleNetwork/app-archivist-nodejs) into a docker swarm compose yml file. 
