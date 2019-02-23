@@ -54,3 +54,5 @@ The highlevel sequence of steps as follows
 ## Archivist Logs on AWS Cloudwatch
 
 ![Screenshot](archivist_cloudwatch.png)
+
+![Screenshot](archivist_log.png)
