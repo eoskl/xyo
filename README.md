@@ -46,3 +46,7 @@ The highlevel sequence of steps as follows
 - download the docker-rds.yml and update the SQL_HOST with the endpoint of the RDS service <your_instance>.rds.amazonaws.com>
 
 ![Screenshot](archivist_rds.png)
+
+## Archivist GraphQL port 11001
+
+![Screenshot](archivist_11001.png)
