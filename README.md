@@ -50,3 +50,7 @@ The highlevel sequence of steps as follows
 ## Archivist GraphQL port 11001
 
 ![Screenshot](archivist_11001.png)
+
+## Archivist Logs on AWS Cloudwatch
+
+![Screenshot](archivist_cloudwatch.png)
