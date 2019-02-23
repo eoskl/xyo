@@ -13,7 +13,7 @@ Use the chmod command to make sure your private key file isn't publicly viewable
 
 chmod 400 my-key-pair.pem
 
-To once the swarm is up lookup the manager_node public dns names and ssh with below command (user is docker for dockerswarm)
+To ssh ito your manager node once the swarm is up, lookup the manager_node public dns names and ssh with below command (user is docker for dockerswarm)
 
 ssh -i /path/my-key-pair.pem docker@public_dns_name_of_manager_node
 
