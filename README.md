@@ -61,11 +61,11 @@ The highlevel sequence of steps as follows
 
 In the AWS CloudFormation Dashboard you will see the 'Stacks' and status. You should delete the Stack ffrom this screen so it will remove again all the resources and leave a clean sheet.
 
-![Screenshot](cloudformation_stack.png)
+![Screenshot](Cloudformation_stack.png)
 
 If you click on your stack you come to the detail screen and under 'Outputs' there are the key parameters you need.
 
-![Screenshot](cloudformation_stack_output.png)
+![Screenshot](Cloudformation_stack_output.png)
 
 - DefaultDNSTarget: This is the public DNS which exposes the ports to outside world. So use this url in a web browser to access the graphQL on port 11001. To connect your geo-mining kit bridge to your archivist you need to retrieve the IP associated to that DNS and use this IP address and port 11000 in your bridge archivist setting.
 - Managers: This provides a link into AWS Console listing your manager nodes. Select one and use the public DNS listed in the AWS console to SSH.
